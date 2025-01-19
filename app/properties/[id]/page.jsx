@@ -7,10 +7,11 @@ import { FaArrowLeft } from "react-icons/fa";
 
 const PropertyPage = async ({ params }) => {
   await connectDB();
-  const property = await Property.findById(params.id).lean();
+  const { id } = await params;
+  const property = await Property.findById(id).lean();
   return (
     <>
-      <PropertyHeaderImage image={property.images[1]} />
+      <PropertyHeaderImage image={property.images[0]} />
       <section>
         <div className="container m-auto py-6 px-6">
           <Link
